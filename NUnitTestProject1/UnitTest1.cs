@@ -59,7 +59,6 @@ namespace NUnitTestProject1
             foreach(var property in response.Data.rates.GetType().GetProperties())
             {
                 Assert.Greater((double)property.GetValue(response.Data.rates),0.0);
-                double rate = (double)property.GetValue(response.Data.rates);
             }
         }
     }
