@@ -2,6 +2,8 @@
 using TechTalk.SpecFlow;
 using RestSharp;
 using FluentAssertions;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace SpartaAPIJmeterTesting
 {
@@ -11,13 +13,15 @@ namespace SpartaAPIJmeterTesting
         private RestClient _client;
         private RestRequest _request;
         private IRestResponse _response;
-        private string APIKey = "123";
+        private ITestOutputHelper _output;
+        private string APIKey = "50291ed68529014693bad5948b2ef70a";
         private string fixerBaseUrl = "https://fixer.io/api/latest/";
 
-        private FixerAPITestsSteps()
+        private FixerAPITestsSteps(ITestOutputHelper output)
         {
             _client = new RestClient(fixerBaseUrl);
             _request = new RestRequest();
+            _output = output;
         }
 
         [When(@"I perform a health check")]
